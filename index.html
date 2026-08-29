@@ -296,11 +296,11 @@ body { background:var(--cream); font-family:"Noto Serif KR","Apple SD Gothic Neo
   </div>
   <div class="account-panel" id="bride-accounts" role="tabpanel" aria-labelledby="bride-tab" hidden>
     <div class="acct-item">
-      <div class="acct-info"><span class="acct-owner">신부 조효원</span><div class="acct-detail"><span class="a-bank">은행명 입력</span><span class="a-num">391-911173-24907</span></div></div>
+      <div class="acct-info"><span class="acct-owner">신부 조효원</span><div class="acct-detail"><span class="a-bank">하나은행</span><span class="a-num">391-911173-24907</span></div></div>
       <button class="copy-account" type="button" data-account="391-911173-24907">계좌 복사</button>
     </div>
     <div class="acct-item">
-      <div class="acct-info"><span class="acct-owner">신부 아버님</span><div class="acct-detail"><span class="a-bank">은행명 입력</span><span class="a-num">계좌번호 입력</span></div></div>
+      <div class="acct-info"><span class="acct-owner">신부 아버님</span><div class="acct-detail"><span class="a-bank">신한은행</span><span class="a-num">110-037-512747</span></div></div>
       <button class="copy-account" type="button" data-account="">계좌 복사</button>
     </div>
   </div>
@@ -591,6 +591,7 @@ rsvpForm.addEventListener('submit', async event => {
     rsvpCompanionCount.value = 0;
     rsvpStatus.textContent = '응답이 전달되었습니다. 감사합니다.';
   } catch (error) {
+    console.error('RSVP 저장 실패:', error);
     rsvpStatus.textContent = '응답 저장에 실패했습니다. 잠시 후 다시 시도해 주세요.';
   } finally {
     rsvpSubmit.disabled = false;

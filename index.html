@@ -544,6 +544,9 @@ function toggleRsvpModal(open) {
 rsvpOpen.addEventListener('click', () => toggleRsvpModal(true));
 rsvpClose.addEventListener('click', () => toggleRsvpModal(false));
 rsvpModal.addEventListener('click', event => { if (event.target === rsvpModal) toggleRsvpModal(false); });
+window.addEventListener('load', () => {
+  setTimeout(() => toggleRsvpModal(true), 500);
+});
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && rsvpModal.classList.contains('open')) toggleRsvpModal(false); });
 
 document.querySelectorAll('input[name="attendance"]').forEach(input => input.addEventListener('change', () => {

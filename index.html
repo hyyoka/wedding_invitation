@@ -591,8 +591,7 @@ rsvpForm.addEventListener('submit', async event => {
     rsvpCompanionCount.value = 0;
     rsvpStatus.textContent = '응답이 전달되었습니다. 감사합니다.';
   } catch (error) {
-    console.error('RSVP 저장 실패:', error);
-    rsvpStatus.textContent = '응답 저장에 실패했습니다. 잠시 후 다시 시도해 주세요.';
+    rsvpStatus.textContent = error;
   } finally {
     rsvpSubmit.disabled = false;
   }

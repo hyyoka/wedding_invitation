@@ -533,18 +533,28 @@ const attendanceDetails = document.getElementById('attendanceDetails');
 const rsvpMealCount = document.getElementById('rsvpMealCount');
 const rsvpCompanionCount = document.getElementById('rsvpCompanionCount');
 
+let isInitialRsvpPopup = false;
 function toggleRsvpModal(open) {
   rsvpModal.classList.toggle('open', open);
-  rsvpModal.setAttribute('aria-hidden', String(!open));
   document.body.style.overflow = open ? 'hidden' : '';
-  if (open) setTimeout(() => rsvpForm.querySelector('input[name="guestSide"]').focus(), 0);
-  else rsvpOpen.focus();
+
+  if (open) {
+    setTimeout(() => rsvpForm.querySelector('input[name="guestSide"]').focus(), 0);
+  } else {
+    if (isInitialRsvpPopup) {
+      window.scrollTo(0, 0);
+      isInitialRsvpPopup = false;
+    } else {
+      rsvpOpen.blur();
+    }
+  }
 }
 
 rsvpOpen.addEventListener('click', () => toggleRsvpModal(true));
 rsvpClose.addEventListener('click', () => toggleRsvpModal(false));
 rsvpModal.addEventListener('click', event => { if (event.target === rsvpModal) toggleRsvpModal(false); });
 window.addEventListener('load', () => {
+  isInitialRsvpPopup = true;
   setTimeout(() => toggleRsvpModal(true), 500);
 });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && rsvpModal.classList.contains('open')) toggleRsvpModal(false); });
